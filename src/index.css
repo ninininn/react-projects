@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+input[type=text]:focus {
+  outline: none;
+}
+
+@layer components {
+  .App {
+    @apply text-center min-h-screen bg-gray-light flex flex-col
+  }
+
+  .App-header {
+    @apply min-h-[8vh] text-xl flex justify-center items-center bg-primary
+  }
+
+  .description {
+    @apply mt-12 text-xl text-dark-blue
+  }
+
+  .addBlock {
+    @apply w-[60vw] h-[50px] my-12 mx-auto bg-white rounded-lg flex justify-between p-2
+  }
+
+  .add-input {
+    @apply w-full
+  }
+
+  .listContainer {
+    @apply w-[60vw] my-0 mx-auto rounded-lg p-8 bg-white shadow-sm
+  }
+
+  .label {
+    @apply cursor-pointer flex items-center w-full
+  }
+
+  .item {
+    &:has(input[type=text]:focus) {
+      @apply border-dark-blue
+    }
+
+    p {
+      @apply cursor-pointer
+    }
+
+    @apply border-b border-gray-light p-4 flex items-center justify-between gap-2 hover:border-dark-blue hover:cursor-pointer
+  }
+
+  .item:hover .item-input {
+    @apply cursor-pointer
+  }
+
+  .add-btn, .edit-btn, .del-btn {
+    @apply rounded-sm bg-primary px-2 py-1 text-dark-blue hover:bg-orange transition hover:text-white
+  }
+
+  .edit-btn,
+  .del-btn, .done-btn {
+    @apply rounded-sm bg-primary px-4 py-2 text-dark-blue hover:bg-orange transition hover:text-white
+  }
+
+  .del-btn {
+    @apply hover:bg-alert
+  }
+
+  .checkbox {
+    @apply appearance-none
+  }
+}
