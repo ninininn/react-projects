@@ -7,7 +7,7 @@ import './index.css';
 //font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChessKing, fas } from '@fortawesome/free-solid-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(fas, far);
 //import other custom components
@@ -73,19 +73,24 @@ function TodoItem({ text, id, isComplete, del, toggle, edit }) {
       setOpen(true);
     }
   };
-  const inputChange = (id) => {
-  };
-  const handleEdit = () => {
+
+  //handleEdit導致edit狀態更改->重新渲染<TodoItem/>>
+  const handleEdit = (e) => {
     setEditable(!editable);
-    edit(id, todoRef.current.value);
+    // edit(id, todoRef.current.value);
+    console.log(e.this);
   };
+
+  //TODO 需要更新ref(todoRef)的current.value
+  useEffect(() => { todoRef.current.value = text; }, [editable]);
   return (
     <div className='item'>
 
       <label className='flex items-center'>
         <Checkbox status={isComplete} toggle={toggle} id={id} />
         {/* //BUG 點擊編輯按鈕後，出現的input沒有文字*/}
-        {editable ? <input type="text" className={editable ? "item-input pl-2" : "hidden"} defaultValue={text} ref={todoRef} /> : <p className={`ml-2 ${isComplete ? "line-through text-gray" : ""}`}>{text}</p>}
+        <input type="text" className={editable ? "item-input pl-2" : "hidden"} defaultValue={text} ref={todoRef} onChange={() => { edit(id, todoRef.current.value); }} />
+        <p className={`ml-2 ${isComplete ? "line-through text-gray" : ""} ${editable ? "hidden" : ""}`}>{text}</p>
       </label>
       <div>
         <FontAwesomeIcon className="edit-btn mr-2" icon={editable ? "fa-solid fa-check" : "fa-regular fa-pen-to-square"} style={{ color: "#ffffff" }} onClick={handleEdit} />
