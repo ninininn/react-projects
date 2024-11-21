@@ -1,8 +1,8 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import globals from 'globals';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
   { ignores: ['dist'] },
@@ -23,9 +23,10 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
-    rules: {
-      ...js.configs.recommended.rules,
-      ...react.configs.recommended.rules,
+    rules: {//用來檢查程式碼的規則
+      ...js.configs.recommended.rules,//用於原始 js 語法的規則
+      "no-unused-vars": ["error", { "vars": "off", "args": "after-used" }],//覆蓋原始設定
+      ...react.configs.recommended.rules,//react 框架的規則
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
       'react/jsx-no-target-blank': 'off',
@@ -35,4 +36,4 @@ export default [
       ],
     },
   },
-]
+];

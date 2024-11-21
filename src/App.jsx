@@ -75,10 +75,9 @@ function TodoItem({ text, id, isComplete, del, toggle, edit }) {
   };
 
   //handleEdit導致edit狀態更改->重新渲染<TodoItem/>>
-  const handleEdit = (e) => {
+  const handleEdit = () => {
     setEditable(!editable);
     // edit(id, todoRef.current.value);
-    console.log(e.this);
   };
 
   //TODO 需要更新ref(todoRef)的current.value
