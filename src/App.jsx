@@ -63,10 +63,10 @@ function Checkbox({ id, status, toggle }) {
 }
 
 //[#] 定義項目(TodoItem)元件
-function TodoItem({ text, id, isComplete, del, toggle, edit }) {
+function TodoItem({ text, id, isComplete, del, toggle, edit, setEditingId, isEditing }) {
   const [open, setOpen] = useState(false);
   const todoRef = useRef(text);
-  const [editable, setEditable] = useState(false);
+  // const [editable, setEditable] = useState(false);
   const handleClick = (e) => {
     if (e.target.classList.contains("del-btn")) {
       //open確認刪除的modal
@@ -76,23 +76,21 @@ function TodoItem({ text, id, isComplete, del, toggle, edit }) {
 
   //handleEdit導致edit狀態更改->重新渲染<TodoItem/>>
   const handleEdit = () => {
-    setEditable(!editable);
-    // edit(id, todoRef.current.value);
+    setEditingId(isEditing ? null : id);
   };
 
   //TODO 需要更新ref(todoRef)的current.value
-  useEffect(() => { todoRef.current.value = text; }, [editable]);
+  useEffect(() => { todoRef.current.value = text; }, []);
   return (
     <div className='item'>
 
       <label className='flex items-center'>
         <Checkbox status={isComplete} toggle={toggle} id={id} />
-        {/* //BUG 點擊編輯按鈕後，出現的input沒有文字*/}
-        <input type="text" className={editable ? "item-input pl-2" : "hidden"} defaultValue={text} ref={todoRef} onChange={() => { edit(id, todoRef.current.value); }} />
-        <p className={`ml-2 ${isComplete ? "line-through text-gray" : ""} ${editable ? "hidden" : ""}`}>{text}</p>
+        <input type="text" className={isEditing ? "item-input pl-2" : "hidden"} defaultValue={text} ref={todoRef} value={text} onChange={() => { edit(id, todoRef.current.value); }} />
+        <p className={`ml-2 ${isComplete ? "line-through text-gray" : ""} ${isEditing ? "hidden" : ""}`}>{text}</p>
       </label>
       <div>
-        <FontAwesomeIcon className="edit-btn mr-2" icon={editable ? "fa-solid fa-check" : "fa-regular fa-pen-to-square"} style={{ color: "#ffffff" }} onClick={handleEdit} />
+        <FontAwesomeIcon className="edit-btn mr-2" icon={isEditing ? "fa-solid fa-check" : "fa-regular fa-pen-to-square"} style={{ color: "#ffffff" }} onClick={handleEdit} />
         <FontAwesomeIcon className="del-btn" icon="fa-solid fa-trash-can" style={{ color: "#ffffff" }} onClick={handleClick} />
 
         {/* dialog */}
@@ -109,8 +107,8 @@ function TodoItem({ text, id, isComplete, del, toggle, edit }) {
 
 
 //[#] 整體list容器
-function ListContainer({ contents, del, toggle, edit }) {
-  let contentArr = contents.map((el, index) => <TodoItem text={el.todo} key={index} id={el.id} isComplete={el.isComplete} del={del} toggle={toggle} edit={edit} />);
+function ListContainer({ contents, del, toggle, edit, setEditingId, isEditing }) {
+  let contentArr = contents.map((el, index) => <TodoItem text={el.todo} key={index} id={el.id} isComplete={el.isComplete} del={del} toggle={toggle} edit={edit} setEditingId={setEditingId} isEditing={isEditing === el.id} />);
 
   return (
     <div className='listContainer'>{contentArr}</div>
@@ -124,6 +122,9 @@ function App() {
   //1. 用陣列儲存完整清單
   const [count, setCount] = useState(localStorage.getItem("todo") ? JSON.parse(localStorage.getItem("todo")).length : 0);
   const [allTodoList, setAllTodoList] = useState(localStorage.getItem("todo") ? JSON.parse(localStorage.getItem("todo")) : []);
+  //管理項目的編輯狀態
+  const [editingId, setEditingId] = useState(null);
+
 
   //2. 新增todo
   const addTodo = (inputText) => {
@@ -143,6 +144,7 @@ function App() {
       return mapArr;
     });
     setCount((prev) => prev - 1);
+    setEditingId(null); //關閉所有項目編輯狀態
   };
 
 
@@ -172,6 +174,7 @@ function App() {
   };
 
 
+
   //#儲存資料到localStorage
   useEffect(() => { localStorage.setItem("todo", JSON.stringify(allTodoList)); }, [allTodoList]);
 
@@ -185,7 +188,7 @@ function App() {
         <InputEnter add={addTodo} />
       </div>
       <div className="text-xl text-dark-blue mb-2">Total : <span className="text-orange font-bold">{count == 0 ? "Empty" : count} </span>lists</div>
-      <ListContainer contents={allTodoList} del={deleteTodo} toggle={toggleComplete} edit={editTodo} />
+      <ListContainer contents={allTodoList} del={deleteTodo} toggle={toggleComplete} edit={editTodo} setEditingId={setEditingId} isEditing={editingId} />
 
       {/* clear所有紀錄 */}
       <button className="bg-dark-blue hover:bg-alert w-fit p-2 rounded-sm mx-auto mt-3 text-white transition-colors" onClick={() => { setAllTodoList([]); setCount(0); }}>Clear All History</button>
