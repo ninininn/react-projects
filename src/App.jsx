@@ -66,7 +66,6 @@ function Checkbox({ id, status, toggle }) {
 function TodoItem({ text, id, isComplete, del, toggle, edit, setEditingId, isEditing }) {
   const [open, setOpen] = useState(false);
   const todoRef = useRef(text);
-  // const [editable, setEditable] = useState(false);
   const handleClick = (e) => {
     if (e.target.classList.contains("del-btn")) {
       //open確認刪除的modal
@@ -74,7 +73,6 @@ function TodoItem({ text, id, isComplete, del, toggle, edit, setEditingId, isEdi
     }
   };
 
-  //handleEdit導致edit狀態更改->重新渲染<TodoItem/>>
   const handleEdit = () => {
     setEditingId(isEditing ? null : id);
   };
@@ -86,7 +84,7 @@ function TodoItem({ text, id, isComplete, del, toggle, edit, setEditingId, isEdi
 
       <label className='flex items-center'>
         <Checkbox status={isComplete} toggle={toggle} id={id} />
-        <input type="text" className={isEditing ? "item-input pl-2" : "hidden"} defaultValue={text} ref={todoRef} value={text} onChange={() => { edit(id, todoRef.current.value); }} />
+        <input type="text" className={isEditing ? "item-input pl-2" : "hidden"} ref={todoRef} value={text} onChange={() => { edit(id, todoRef.current.value); }} />
         <p className={`ml-2 ${isComplete ? "line-through text-gray" : ""} ${isEditing ? "hidden" : ""}`}>{text}</p>
       </label>
       <div>
