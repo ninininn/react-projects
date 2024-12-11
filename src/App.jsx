@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import './index.css';
 // import tw from 'twin.macro';
 // import ReactDOM from 'react-dom';
-//Ant-design
-// import { Space, Table, Tag } from 'antd';
 //font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -13,12 +11,10 @@ library.add(fas, far);
 //import other custom components
 import Modal from '../src/components/Modal';
 
-
-//twin.macro 使用tailwind+emotion寫法
+// twin.macro 使用tailwind+emotion寫法
 // const Test = tw.button`
 //   w-56 bg-primary text-white py-2
 // `;
-
 
 
 //[#] 定義輸入框(InputEnter)元件
@@ -66,6 +62,7 @@ function Checkbox({ id, status, toggle }) {
 function TodoItem({ text, id, isComplete, del, toggle, edit, setEditingId, isEditing }) {
   const [open, setOpen] = useState(false);
   const todoRef = useRef(text);
+  // const [editable, setEditable] = useState(false);
   const handleClick = (e) => {
     if (e.target.classList.contains("del-btn")) {
       //open確認刪除的modal
