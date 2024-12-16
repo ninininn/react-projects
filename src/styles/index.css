@@ -30,6 +30,12 @@ input[type=text]:focus {
     @apply min-h-[8vh] text-xl flex justify-center items-center bg-primary
   }
 
+
+  .project{
+    @apply text-2xl font-bold text-dark-blue transition-all hover:text-orange
+  }
+
+
   .description {
     @apply mt-12 text-xl text-dark-blue
   }

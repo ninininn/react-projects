@@ -2,7 +2,7 @@
 
 export default {
   content: ["./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",],
+    './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -18,7 +18,7 @@ export default {
         'gray': '#919190',
         'gray-light': '#ededed',
         'dark-blue': '#004466',
-        'alert':'#c43131'
+        'alert': '#c43131'
       },
       fontFamily: {
         sans: ['Graphik', 'sans-serif'],

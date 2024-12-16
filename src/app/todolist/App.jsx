@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './index.css';
 // import tw from 'twin.macro';
 // import ReactDOM from 'react-dom';
 //font-awesome
@@ -9,7 +8,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(fas, far);
 //import other custom components
-import Modal from '../src/components/Modal';
+import Modal from '../../components/Modal';
 
 // twin.macro 使用tailwind+emotion寫法
 // const Test = tw.button`
@@ -174,10 +173,7 @@ function App() {
   useEffect(() => { localStorage.setItem("todo", JSON.stringify(allTodoList)); }, [allTodoList]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className='title font-bold text-dark-blue'>{title}</h1>
-      </header>
+    <>
       <p className="description">Enter Your Todo items, then press Enter key or the Add button behind.</p>
       <div className='addBlock'>
         <InputEnter add={addTodo} />
@@ -187,7 +183,9 @@ function App() {
 
       {/* clear所有紀錄 */}
       <button className="bg-dark-blue hover:bg-alert w-fit p-2 rounded-sm mx-auto mt-3 text-white transition-colors" onClick={() => { setAllTodoList([]); setCount(0); }}>Clear All History</button>
-    </div>
+    </>
+
+
   );
 }
 
