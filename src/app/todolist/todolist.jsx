@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 // import tw from 'twin.macro';
-// import ReactDOM from 'react-dom';
-//font-awesome
+//@font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(fas, far);
-//import other custom components
+
+//@import other custom components
 import Modal from '../../components/Modal';
 
 // twin.macro 使用tailwind+emotion寫法
@@ -110,7 +110,7 @@ function ListContainer({ contents, del, toggle, edit, setEditingId, isEditing })
 }
 
 //[#] 完整清單容器
-function App() {
+export default function TodoList() {
   let title = "Todo List";
 
   //1. 用陣列儲存完整清單
@@ -188,5 +188,3 @@ function App() {
 
   );
 }
-
-export default App;

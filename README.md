@@ -7,7 +7,7 @@
 ## Tech
 - React
 - Tailwind
-- Vite
+- Next.js
 - twin.macro
 - Ant Design
 
@@ -16,6 +16,21 @@
 1. 儲存InputEnter輸入的文字內容
 2. 紀錄Checkbox元件狀態
 3. 依照點擊的Button種類決定進行 編輯(edit) / 刪除(delete) 的動作
+
+## Documents 專案結構
+
+        React-Projects/
+        ├─ public/
+        │  
+        ├─ src/
+        │  ├─ app/                  #App router
+        │  │  ├─ caculator/         #計算機專案
+        │  │  ├─ todolist/          #TodoList專案
+        │  │  ├─ layout.js
+        │  │  ├─ page.jsx
+        │  │
+        │  ├─ components/           #通用元件
+        │  ├─ styles/               #專案內所有樣式css
 
 ## Components 專案元件結構及說明
     <App/>
