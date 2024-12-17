@@ -24,13 +24,15 @@
         │  
         ├─ src/
         │  ├─ app/                  #App router
+        │  │  ├─ about/             #關於我
         │  │  ├─ caculator/         #計算機專案
         │  │  ├─ todolist/          #TodoList專案
-        │  │  ├─ layout.js
-        │  │  ├─ page.jsx
+        │  │  ├─ layout.jsx         #RootLayout
+        │  │  ├─ page.jsx           
+        │  │  ├─ loading.jsx           
         │  │
         │  ├─ components/           #通用元件
-        │  ├─ styles/               #專案內所有樣式css
+        │  ├─ styles/               #專案內所有css樣式
 
 ## Components 專案元件結構及說明
     <App/>

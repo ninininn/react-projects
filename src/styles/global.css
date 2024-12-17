@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,6 +10,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, #fffef9 6%, #fffaef 48%, #fff2ee 91%);
+  background-size: cover; /* 填滿整個畫面 */
+  background-attachment: fixed; /* 固定背景，避免捲動 */
 }
 
 code {
@@ -22,14 +26,24 @@ input[type=text]:focus {
 }
 
   .App {
-    @apply text-center min-h-screen bg-gray-light flex flex-col
+    @apply text-center min-h-screen flex flex-col
   }
 
+  .background-floating{
+    z-index: -1;
+    filter:blur(180px);
+    @apply fixed w-full h-full top-0 left-0 flex justify-between items-center
+  }
+
+
+
   .App-header {
-    @apply min-h-[8vh] text-xl flex justify-center items-center bg-primary
+    background-color: #ffffff2c;
+    @apply min-h-[8vh] text-xl flex justify-center items-center shadow-sm
   }
 
 
   .project{
-    @apply text-2xl font-bold text-dark-blue transition-all hover:text-orange
+    background-color: #ffffffd8;
+    @apply text-2xl font-bold text-dark-blue transition-all hover:text-orange p-5 rounded-md hover:border-orange shadow-sm flex items-center justify-center gap-8 hover:shadow-lg
   }
