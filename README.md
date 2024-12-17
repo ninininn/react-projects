@@ -25,7 +25,7 @@
         ├─ src/
         │  ├─ app/                  #App router
         │  │  ├─ about/             #關於我
-        │  │  ├─ caculator/         #計算機專案
+        │  │  ├─ calculator/         #計算機專案
         │  │  ├─ todolist/          #TodoList專案
         │  │  ├─ layout.jsx         #RootLayout
         │  │  ├─ page.jsx           
