@@ -41,7 +41,7 @@ input[type=text]:focus {
 
 .App-header {
   background-color: #ffffff2c;
-  @apply min-h-[8vh] text-xl flex justify-center items-center shadow-sm
+  @apply min-h-[8vh] text-xl flex justify-center items-center 
 }
 
 
