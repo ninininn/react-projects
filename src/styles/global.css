@@ -11,8 +11,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(180deg, #fffef9 6%, #fffaef 48%, #fff2ee 91%);
-  background-size: cover; /* 填滿整個畫面 */
-  background-attachment: fixed; /* 固定背景，避免捲動 */
+  background-size: cover;
+  /* 填滿整個畫面 */
+  background-attachment: fixed;
+  /* 固定背景，避免捲動 */
 }
 
 code {
@@ -25,25 +27,75 @@ input[type=text]:focus {
   outline: none;
 }
 
-  .App {
-    @apply text-center min-h-screen flex flex-col
+.App {
+  @apply text-center min-h-screen flex flex-col
+}
+
+.background-floating {
+  z-index: -1;
+  filter: blur(180px);
+  @apply fixed w-full h-full top-0 left-0 flex justify-between items-center
+}
+
+
+
+.App-header {
+  background-color: #ffffff2c;
+  @apply min-h-[8vh] text-xl flex justify-center items-center shadow-sm
+}
+
+
+.project {
+  background-color: #ffffffd8;
+  @apply text-2xl font-bold text-dark-blue transition-all hover:text-orange p-5 rounded-md hover:border-orange shadow-sm flex items-center justify-center gap-8 hover:shadow-lg
+}
+
+.code {
+  font-family: consolas, 'Noto Sans TC', sans-serif;
+  color: #F58D55;
+  font-size: 48px;
+  position: relative;
+  letter-spacing: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: type 4s steps(4) infinite;
+}
+
+@keyframes type {
+  0% {
+    width: 0%;
   }
 
-  .background-floating{
-    z-index: -1;
-    filter:blur(180px);
-    @apply fixed w-full h-full top-0 left-0 flex justify-between items-center
+  50% {
+    width: 100%;
   }
 
-
-
-  .App-header {
-    background-color: #ffffff2c;
-    @apply min-h-[8vh] text-xl flex justify-center items-center shadow-sm
+  90% {
+    width: 100%;
   }
 
-
-  .project{
-    background-color: #ffffffd8;
-    @apply text-2xl font-bold text-dark-blue transition-all hover:text-orange p-5 rounded-md hover:border-orange shadow-sm flex items-center justify-center gap-8 hover:shadow-lg
+  100% {
+    width: 0%;
   }
+}
+
+/*光標*/
+.code::after {
+  position: absolute;
+  content: '';
+  width: 2px;
+  height: 100%;
+  right: 0;
+  background: #F58D55;
+  animation: blink 0.8s steps(2) infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
