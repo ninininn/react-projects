@@ -34,33 +34,19 @@
         │  ├─ components/           #通用元件
         │  ├─ styles/               #專案內所有css樣式
 
-## Components 專案元件結構及說明
-    <App/>
-    |-- allTodoList : 記錄所有項目內容
-    |-- count : 總數
-    |
-    |-- <InputEnter/>  
-    |   |-- inputRef(useRef) : 輸入的項目內容
-    |
-    |-- <ListContainer/>
-    |   | 
-    |   |-- <TodoItem/>
-    |   |   |-- todoValue : 項目內容
-    |   |   |-- doneStatus : 完成狀態
-    |   |   |
-    |   |   |-- <Checkbox/>
-    |   |   |   |-- check : 勾選狀態
+## TodoList 專案元件結構及說明
+1. 主要功能
+ - 點擊 `Add` 時新增項目至清單中
+ - 顯示並紀錄目前清單內總數
+ - 每條項目可以勾選表示完成/未完成狀態
+ - 點選各項目的刪除按鈕來刪除該項目，並跳出提醒視窗
+ - 點選各項目的編輯按鈕以開啟編輯內容
+ - 將當下所有清單內容記錄到 `localStorage` 中
+ - 點擊 `Clear All History` 以清除所有暫存
 
-- `<App/>` 最終匯出元件
-
-- `<InputEnter/>` 輸入框
-
-- `<ListContainer/>` 所有項目容器
-
-- `<TodoItem/>` 每個清單項目
-
-- `<Checkbox/>` 勾選狀態
-
-
-
-
+## Calculator 專案元件結構及說明
+1. 主要功能
+ - 點擊 `AC` 時清除所有內容
+ - 一般加減乘除計算
+ - 點擊 `<` 時代表倒退一步
+ - 每點擊一次 `=` 即代表開始重新一輪的計算
