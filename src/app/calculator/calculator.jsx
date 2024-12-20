@@ -9,15 +9,19 @@ const col5 = [".", "0", "="];
 
 const keyboardBtn = [...col1, ...col2, ...col3, ...col4, ...col5];
 
+
+//@Main component
 export default function Calculator() {
-    const [nextRound, setNextRound] = useState(false);
-    const [input, setInput] = useState('');
-    const [calResult, setCalResult] = useState(null);
+
+    const [nextRound, setNextRound] = useState(false); //新一輪計算
+    const [input, setInput] = useState(''); //輸入時數字
+    const [calResult, setCalResult] = useState(null); //計算之結果
 
     //TODO 按下"="時把目前結果顯示
     const calculateResult = () => {
-        // const result = evaluateExpression(input);
-        // setCalResult("result");
+        const result = evaluateExpression(input);
+        setCalResult(result);
+        setInput('');
         setNextRound(!nextRound);
     };
 
@@ -37,33 +41,68 @@ export default function Calculator() {
                 break;
             default:
                 setInput(prev => prev + keyValue);
-                evaluateExpression(input, keyValue);
+                const updatedInput = input + keyValue;
+                if (isCompleteExpression(updatedInput)) {
+                    const calcResult = evaluateExpression(updatedInput);
+                    setCalResult(calcResult);
+                }
                 break;
         }
     };
-
 
     //清除所有值
     const clear = () => {
         setInput('');
         setCalResult(null);
     };
-
-    //計算邏輯
-    const evaluateExpression = (input, operator) => {
-        console.log("start counting!");
-        console.log("當次傳入的input狀態:", input, "目前的calResult:", calResult, "當下按鈕:", operator);
-        //TODO 紀錄當次計算結果，接續計算
-        // let result = input.split("+").map(el => Number(el)).reduce((a, b) => a + b);
-        // console.log("result:", result);
-        setCalResult(operator);
+    // 判斷是否為完整的表達式
+    const isCompleteExpression = (expression) => {
+        // 完整表達式的結尾應該是數字（不是運算符）
+        return /\d$/.test(expression);
     };
+
+    // 計算表達式
+    const evaluateExpression = (expression) => {
+        // 替換 x 和 ÷ 為對應的運算符號
+        const sanitizedExpression = expression.replace(/x/g, '*').replace(/÷/g, '/');
+
+        const tokens = sanitizedExpression.match(/(\d+(\.\d+)?|[+\-*/])/g);
+        if (!tokens) return '';
+
+        let total = parseFloat(tokens[0]);
+
+        for (let i = 1; i < tokens.length; i += 2) {
+            const operator = tokens[i];
+            const nextNumber = parseFloat(tokens[i + 1]);
+
+            switch (operator) {
+                case '+':
+                    total += nextNumber;
+                    break;
+                case '-':
+                    total -= nextNumber;
+                    break;
+                case '*':
+                    total *= nextNumber;
+                    break;
+                case '/':
+                    if (nextNumber === 0) throw new Error('Division by Zero');
+                    total /= nextNumber;
+                    break;
+                default:
+                    throw new Error('Invalid Operator');
+            }
+        }
+
+        return total;
+    };
+
 
     return (
         <div id="cal-container">
             <div className='key-input'>
                 <p>{input}</p>
-                <p>{calResult}</p>
+                <p>{calResult !== null && `${calResult}`}</p>
             </div>
             <div className="keyboard">
                 {keyboardBtn.map(el => <button onClick={el === "=" ? calculateResult : () => { handelClick(el); }} key={el} className="keys">{el}</button>)}
