@@ -17,7 +17,7 @@ export default function Calculator() {
     const [input, setInput] = useState(''); //輸入時數字
     const [calResult, setCalResult] = useState(null); //計算之結果
 
-    //TODO 按下"="時把目前結果顯示
+    //#按下"="時把目前結果顯示
     const calculateResult = () => {
         const result = evaluateExpression(input);
         setCalResult(result);
@@ -25,7 +25,24 @@ export default function Calculator() {
         setNextRound(!nextRound);
     };
 
-    //抓取點擊的內容
+    //#處理倒退按鈕 "<" 點擊
+    const handleBackspaceClick = () => {
+        const updatedInput = input.slice(0, -1);
+        setInput(updatedInput);
+
+        if (isCompleteExpression(updatedInput)) {
+            try {
+                const calcResult = evaluateExpression(updatedInput);
+                setCalResult(calcResult);
+            } catch {
+                setCalResult('Error');
+            }
+        } else {
+            setCalResult(null);
+        }
+    };
+
+    //#抓取點擊的內容
     const handelClick = (keyValue) => {
         if (nextRound) {
             console.log("new round!");
@@ -37,7 +54,7 @@ export default function Calculator() {
                 clear();
                 break;
             case "<":
-                setInput(prev => prev.slice(0, -1));
+                handleBackspaceClick();
                 break;
             default:
                 setInput(prev => prev + keyValue);
@@ -50,18 +67,20 @@ export default function Calculator() {
         }
     };
 
-    //清除所有值
+    //#清除所有值
     const clear = () => {
         setInput('');
         setCalResult(null);
     };
-    // 判斷是否為完整的表達式
+
+
+    //#判斷是否為完整的表達式
     const isCompleteExpression = (expression) => {
         // 完整表達式的結尾應該是數字（不是運算符）
         return /\d$/.test(expression);
     };
 
-    // 計算表達式
+    //#計算表達式
     const evaluateExpression = (expression) => {
         // 替換 x 和 ÷ 為對應的運算符號
         const sanitizedExpression = expression.replace(/x/g, '*').replace(/÷/g, '/');
@@ -97,6 +116,32 @@ export default function Calculator() {
         return total;
     };
 
+    //#處理鍵盤輸入
+    const handleKeyDown = (e) => {
+        const key = e.key;
+        switch (key) {
+            case ("Enter" || "="):
+                calculateResult();
+                break;
+            case "Backspace":
+                handleBackspaceClick();
+                break;
+            case "Escape":
+                clear();
+                break;
+            default:
+                handelClick(key === '*' ? 'x' : key === '/' ? '÷' : key);
+                break;
+        }
+    };
+
+    //#清除 keydown監聽器(副作用)
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [input]);
 
     return (
         <div id="cal-container">
