@@ -11,7 +11,7 @@ library.add(fas, far);
 import { useSelectedLayoutSegment } from 'next/navigation';
 
 
-const options = ["Todolist", "Calculator", "About"];
+const options = ["Todolist", "Calculator", "About", "Finance"];
 
 
 export default function RootLayout({ children }) {

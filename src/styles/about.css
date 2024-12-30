@@ -1,0 +1,20 @@
+.section-title{
+    font-size: 28px;
+    font-weight: 600;
+    @apply text-orange
+}
+
+.skill-item{
+    @apply flex justify-center items-center gap-5 bg-white rounded-full p-3 border border-primary
+}
+
+.hobby-item{
+    @apply flex flex-col items-center gap-3
+}
+
+:is(.skill-item,.hobby-item) p{
+    @apply text-2xl text-dark-blue
+}
+:is(.skill-item,.hobby-item) img{
+    @apply drop-shadow
+}

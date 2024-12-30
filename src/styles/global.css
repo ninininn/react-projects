@@ -48,6 +48,7 @@ input[type=text]:focus {
 
 .App {
   background: linear-gradient(180deg, var(--main-bg) 6%, var(--second-bg) 48%, var(--third-bg) 91%);
+
   background-size: cover;
   /* 填滿整個畫面 */
   background-attachment: fixed;
@@ -75,6 +76,12 @@ input[type=text]:focus {
   --third-bg: #e3eeff;
 }
 
+.App.finance {
+  --main-bg: #FFFEEF;
+  --second-bg: #F8FDFD;
+  --third-bg: #E5F9FC;
+}
+
 .background-floating {
   z-index: -1;
   filter: blur(180px);
@@ -91,7 +98,7 @@ input[type=text]:focus {
 
 .project {
   background-color: #ffffffd8;
-  @apply text-2xl font-bold text-dark-blue transition-all hover:text-orange p-5 rounded-md hover:border-orange shadow-sm flex items-center justify-center gap-8 hover:shadow-lg
+  @apply text-2xl font-bold text-dark-blue transition-all hover:text-orange p-5 rounded-md hover:border-orange flex items-center justify-center gap-8 hover:shadow-lg drop-shadow
 }
 
 .code {
@@ -142,4 +149,12 @@ input[type=text]:focus {
   100% {
     opacity: 1;
   }
+}
+
+::-webkit-scrollbar {
+  @apply w-[10px] bg-transparent
+}
+
+::-webkit-scrollbar-thumb {
+  @apply w-[10px] bg-gray rounded-full
 }

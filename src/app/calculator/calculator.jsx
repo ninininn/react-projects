@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //@keyboard layout
 const col1 = ["AC", "÷", "<"];
@@ -8,6 +8,7 @@ const col4 = ["1", "2", "3", "+"];
 const col5 = [".", "0", "="];
 
 const keyboardBtn = [...col1, ...col2, ...col3, ...col4, ...col5];
+
 
 
 //@Main component
