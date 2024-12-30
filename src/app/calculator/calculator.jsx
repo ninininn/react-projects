@@ -143,6 +143,7 @@ export default function Calculator() {
         };
     }, [input]);
 
+
     return (
         <div id="cal-container">
             <div className='key-input'>

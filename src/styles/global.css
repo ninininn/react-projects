@@ -10,11 +10,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(180deg, #fffef9 6%, #fffaef 48%, #fff2ee 91%);
-  background-size: cover;
-  /* 填滿整個畫面 */
-  background-attachment: fixed;
-  /* 固定背景，避免捲動 */
 }
 
 code {
@@ -27,8 +22,57 @@ input[type=text]:focus {
   outline: none;
 }
 
+@property --main-bg {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #fffef9;
+}
+
+@property --second-bg {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #fffaef;
+}
+
+@property --third-bg {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #fff2ee;
+}
+
+@property --gradient-rotate {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 180deg;
+}
+
 .App {
+  background: linear-gradient(180deg, var(--main-bg) 6%, var(--second-bg) 48%, var(--third-bg) 91%);
+  background-size: cover;
+  /* 填滿整個畫面 */
+  background-attachment: fixed;
+  /* 固定背景，避免捲動 */
+  transition: --main-bg 0.5s, --second-bg 0.8s,
+    --gradient-rotate 0.6s, --third-bg 0.5s;
   @apply text-center min-h-screen flex flex-col
+}
+
+.App.about {
+  --main-bg: #fffcee;
+  --second-bg: #fffbeb;
+  --third-bg: #fcffec;
+}
+
+.App.todolist {
+  --main-bg: #fffef9;
+  --second-bg: #fdf1f3;
+  --third-bg: #f1f6ff;
+}
+
+.App.calculator {
+  --main-bg: #fdfdfd;
+  --second-bg: #dfe9f3;
+  --third-bg: #e3eeff;
 }
 
 .background-floating {
@@ -41,7 +85,7 @@ input[type=text]:focus {
 
 .App-header {
   background-color: #ffffff2c;
-  @apply min-h-[8vh] text-xl flex justify-center items-center 
+  @apply min-h-[8vh] text-xl flex justify-center items-center
 }
 
 

@@ -21,9 +21,9 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body>
                 <div id="root">
-                    <div className="App">
+                    <div className={`App ${activeSegment}`}>
                         <header className="App-header">
-                            <h1 className='title font-bold text-dark-blue select-none text-3xl'>{activeSegment === null ? "Projects Home" : options[options.map((el) => el.toLowerCase()).indexOf(activeSegment)]}</h1>
+                            <h1 className='title font-bold text-dark-blue select-none text-3xl'>{activeSegment === null ? "Home Page" : options[options.map((el) => el.toLowerCase()).indexOf(activeSegment)]}</h1>
                             {activeSegment === null || <Link href='/' className="absolute right-5 bg-dark-blue p-2 rounded-md text-white text-sm hover:bg-orange transition-all">
                                 <FontAwesomeIcon className="text-white mr-2" icon="fa-solid fa-home" >
                                 </FontAwesomeIcon>

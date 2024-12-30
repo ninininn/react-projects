@@ -1,3 +1,4 @@
+
 #cal-container {
     @apply mx-auto my-10 flex flex-col gap-3 bg-gray-light w-fit p-5 rounded-md shadow-md
 }

@@ -1,11 +1,14 @@
+'use client';
 //!About me
-import Image from 'next/image';
-import me from '../../../public/me.png';
+import dynamic from "next/dynamic";
+const AboutMe = dynamic(() => import('./aboutme.jsx'), { ssr: false });
+
 
 export default function About() {
+
     return (
         <>
-            <Image src={me} alt="me" width={200}></Image>
+            <AboutMe />
         </>
     );
 }
