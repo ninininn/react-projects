@@ -7,19 +7,21 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(fas, far);
-
+import { Afacad } from 'next/font/google';
 import { useSelectedLayoutSegment } from 'next/navigation';
-
 
 const options = ["Todolist", "Calculator", "About", "Finance"];
 
-
+const afacad = Afacad({
+    subsets: ['latin'],
+    variable: '--font-afacad'
+});
 export default function RootLayout({ children }) {
     const activeSegment = useSelectedLayoutSegment();
 
     return (
         <html lang="en">
-            <body>
+            <body className={`${afacad.variable}`}>
                 <div id="root">
                     <div className={`App ${activeSegment}`}>
                         <header className="App-header">

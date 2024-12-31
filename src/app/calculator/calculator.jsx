@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import FadeInComponent from '../../components/fadeInComponent';
 
 //@keyboard layout
 const col1 = ["AC", "÷", "<"];
@@ -8,8 +9,6 @@ const col4 = ["1", "2", "3", "+"];
 const col5 = [".", "0", "="];
 
 const keyboardBtn = [...col1, ...col2, ...col3, ...col4, ...col5];
-
-
 
 //@Main component
 export default function Calculator() {
@@ -33,6 +32,7 @@ export default function Calculator() {
 
         if (isCompleteExpression(updatedInput)) {
             try {
+
                 const calcResult = evaluateExpression(updatedInput);
                 setCalResult(calcResult);
             } catch {
@@ -146,14 +146,16 @@ export default function Calculator() {
 
 
     return (
-        <div id="cal-container">
-            <div className='key-input'>
-                <p>{input}</p>
-                <p>{calResult !== null && `${calResult}`}</p>
+        <FadeInComponent>
+            <div id="cal-container">
+                <div className='key-input'>
+                    <p>{input}</p>
+                    <p>{calResult !== null && `${calResult}`}</p>
+                </div>
+                <div className="keyboard">
+                    {keyboardBtn.map(el => <button onClick={el === "=" ? calculateResult : () => { handelClick(el); }} key={el} className="keys">{el}</button>)}
+                </div>
             </div>
-            <div className="keyboard">
-                {keyboardBtn.map(el => <button onClick={el === "=" ? calculateResult : () => { handelClick(el); }} key={el} className="keys">{el}</button>)}
-            </div>
-        </div>
+        </FadeInComponent>
     );
 }

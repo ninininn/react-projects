@@ -1,20 +1,31 @@
 .section-title{
-    font-size: 28px;
+    font-size: 36px;
     font-weight: 600;
-    @apply text-orange
+    @apply text-orange text-left
 }
 
-.skill-item{
-    @apply flex justify-center items-center gap-5 bg-white rounded-full p-3 border border-primary
+.skill-item,.work-item{
+    grid-template-columns:auto 1fr;
+    @apply grid px-3 gap-3 justify-items-start items-center bg-white rounded-[20px] py-4 border border-gray-light drop-shadow-sm
 }
 
 .hobby-item{
     @apply flex flex-col items-center gap-3
 }
 
-:is(.skill-item,.hobby-item) p{
-    @apply text-2xl text-dark-blue
+:is(.skill-item,.hobby-item,.work-item) p{
+    @apply text-xl text-dark-blue font-bold
 }
-:is(.skill-item,.hobby-item) img{
-    @apply drop-shadow
+
+:is(.skill-item,.work-item):not(.design) img{
+    grid-row:1/3;
+}
+:is(.skill-item,.work-item) span{
+   grid-column:2/3;
+   @apply text-left
+}
+
+
+.footer{
+    @apply bg-gray-dark mt-10 text-white py-10 px-20 flex gap-10 items-center
 }

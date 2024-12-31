@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
+import FadeInComponent from '../../components/fadeInComponent';
+
 // import tw from 'twin.macro';
 //@font-awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -173,18 +175,18 @@ export default function TodoList() {
   useEffect(() => { localStorage.setItem("todo", JSON.stringify(allTodoList)); }, [allTodoList]);
 
   return (
-    <>
-      <p className="description">Enter Your Todo items, then press Enter key or the Add button behind.</p>
-      <div className='addBlock'>
-        <InputEnter add={addTodo} />
-      </div>
-      <div className="text-xl text-dark-blue mb-2">Total : <span className="text-orange font-bold">{count == 0 ? "Empty" : count} </span>lists</div>
-      <ListContainer contents={allTodoList} del={deleteTodo} toggle={toggleComplete} edit={editTodo} setEditingId={setEditingId} isEditing={editingId} />
 
-      {/* clear所有紀錄 */}
-      <button className="bg-dark-blue hover:bg-alert w-fit p-2 rounded-sm mx-auto mt-3 text-white transition-colors" onClick={() => { setAllTodoList([]); setCount(0); }}>Clear All History</button>
-    </>
+      <FadeInComponent>
+        <p className="description">Enter Your Todo items, then press Enter key or the Add button behind.</p>
+        <div className='addBlock'>
+          <InputEnter add={addTodo} />
+        </div>
+        <div className="text-xl text-dark-blue mb-2">Total : <span className="text-orange font-bold">{count == 0 ? "Empty" : count} </span>lists</div>
+        <ListContainer contents={allTodoList} del={deleteTodo} toggle={toggleComplete} edit={editTodo} setEditingId={setEditingId} isEditing={editingId} />
 
+        {/* clear所有紀錄 */}
+        <button className="bg-dark-blue hover:bg-alert w-fit p-2 rounded-sm mx-auto mt-3 text-white transition-colors" onClick={() => { setAllTodoList([]); setCount(0); }}>Clear All History</button>
+      </FadeInComponent>
 
   );
 }
