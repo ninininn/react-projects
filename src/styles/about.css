@@ -6,7 +6,7 @@
 
 .skill-item,.work-item{
     grid-template-columns:auto 1fr;
-    @apply grid px-3 gap-3 justify-items-start items-center bg-white rounded-[20px] py-4 border border-gray-light drop-shadow-sm
+    @apply grid px-3 gap-3 justify-items-start items-center bg-white rounded-[20px] py-4 border border-gray-light drop-shadow-sm hover:cursor-pointer
 }
 
 .hobby-item{
@@ -22,10 +22,18 @@
 }
 :is(.skill-item,.work-item) span{
    grid-column:2/3;
-   @apply text-left
+   @apply text-left text-gray-dark
 }
 
+.work-item .tag{
+    @apply bg-gray-light rounded-full px-3
+}
+.work-item .description{
+   grid-column:2/3;
+   @apply font-normal text-gray-dark
+}
 
 .footer{
+    user-select: none;
     @apply bg-gray-dark mt-10 text-white py-10 px-20 flex gap-10 items-center
 }

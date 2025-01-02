@@ -7,6 +7,7 @@ import calculate from '../../public/cal.png';
 import me from '../../public/me.png';
 import financePig from '../../public/finance.png';
 
+
 export default function Home() {
     return (
         <>
