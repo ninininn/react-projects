@@ -2,9 +2,6 @@ import { useEffect } from "react";
 import FadeInComponent from '../../components/fadeInComponent';
 import { div } from "motion/react-client";
 
-
-//# credit card record
-
 //# User upload-block
 function Upload() {
     const handleUpload = () => {
