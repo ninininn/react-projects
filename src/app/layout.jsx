@@ -1,7 +1,7 @@
 //!RootLayout!
 'use client';
 import Link from 'next/link';
-import Head from "next/head";
+import { Metadata } from 'next';
 import '../styles/global.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,7 +15,7 @@ import { spFont } from './utils/font';
 
 const projects = ["Todolist", "Calculator", "About", "FileReader"];
 
-export const metadata = {
+export const Metadata = {
     title: "My Portfolio",
     icons: {
         icon: "react-projects/me.png", // 如果需要使用 .ico 格式，也可以換成 "/favicon.ico"
