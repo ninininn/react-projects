@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
 
     return (
         <html lang="en">
-            <link type='icon' src="../../public/me.png"></link>
+            <link rel="icon" href="../../public/me.png" sizes="any" />
             <body className={`${spFont}`}>
                 <div id="root" >
                     <div className={`App ${activeSegment}`}>
