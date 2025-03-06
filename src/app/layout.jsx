@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
                 <Head>
                     <title>{currentPage}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <link rel="icon" href="./me.png" sizes="any" />
+                    <link rel="icon" href="/react-projects/me.png" sizes="any" />
                 </Head>
             </head>
             <body className={`${spFont}`}>
