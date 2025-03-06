@@ -14,12 +14,6 @@ import { spFont } from './utils/font';
 
 const projects = ["Todolist", "Calculator", "About", "FileReader"];
 
-export const metadata = {
-    title: "My Portfolio",
-    icons: {
-        icon: "react-projects/me.png", // 如果需要使用 .ico 格式，也可以換成 "/favicon.ico"
-    },
-};
 export default function ClientLayout({ children }) {
     const activeSegment = useSelectedLayoutSegment();
     const currentPage = activeSegment
