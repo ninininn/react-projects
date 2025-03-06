@@ -14,10 +14,10 @@
   "app\\about\\page.jsx -> ./aboutme.jsx": {
     "id": 2491,
     "files": [
-      "static/chunks/870fdd6f.b8ef42aa1beccced.js",
+      "static/chunks/870fdd6f-021069c405d74c03.js",
       "static/chunks/69b09407.310306d42a9dc083.js",
       "static/chunks/591-26cf85ef93ab0c4d.js",
-      "static/chunks/83.8b98aa7465a24f80.js",
+      "static/chunks/83-cd763b5a458cb72b.js",
       "static/chunks/565-88a1b070b8401522.js",
       "static/chunks/491.c1bdae8e0dd17433.js"
     ]
@@ -39,9 +39,9 @@
   "app\\todolist\\page.jsx -> ./todolist.jsx": {
     "id": 467,
     "files": [
-      "static/chunks/870fdd6f.b8ef42aa1beccced.js",
+      "static/chunks/870fdd6f-021069c405d74c03.js",
       "static/chunks/591-26cf85ef93ab0c4d.js",
-      "static/chunks/83.8b98aa7465a24f80.js",
+      "static/chunks/83-cd763b5a458cb72b.js",
       "static/chunks/467.64dad94e344e3eeb.js"
     ]
   }
