@@ -1,0 +1,3 @@
+.upload-block {
+    @apply w-[80%] bg-white mx-auto rounded-md shadow-md px-8 py-10 mt-5
+}

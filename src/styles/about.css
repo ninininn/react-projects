@@ -1,7 +1,7 @@
 .section-title{
     font-size: 36px;
     font-weight: 600;
-    @apply text-orange text-left
+    @apply text-orange text-left font-sp
 }
 
 .skill-item,.work-item{
@@ -28,7 +28,7 @@
 .work-item .tag{
     @apply bg-gray-light rounded-full px-3
 }
-.work-item .description{
+.work-item .content{
    grid-column:2/3;
    @apply font-normal text-gray-dark
 }

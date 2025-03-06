@@ -14,7 +14,7 @@ export default {
         'orange': '#df8465',
         'green': '#72c095',
         'yellow': '#ebc66a',
-        'gray-dark': '#272727',
+        'gray-dark': '#353535',
         'gray': '#919190',
         'gray-light': '#ededed',
         'dark-blue': '#004466',
@@ -23,6 +23,7 @@ export default {
       fontFamily: {
         sans: ['Graphik', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
+        sp: ['var(--font-afacad)'],
       },
     },
   },

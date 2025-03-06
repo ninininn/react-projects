@@ -5,9 +5,6 @@
 
 body {
   margin: 0;
-  font-family: var(--font-afacad), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -74,12 +71,12 @@ input[type=text]:focus {
 .App.calculator,
 .App.calculator .App-header {
   --main-bg: #fdfdfd;
-  --second-bg: #dfe9f3;
-  --third-bg: #e3eeff;
+  --second-bg: #dcecf3;
+  --third-bg: #e0f3ff;
 }
 
-.App.finance,
-.App.finance .App-header {
+.App.filereader,
+.App.filereader .App-header {
   --main-bg: #FFFEEF;
   --second-bg: #F8FDFD;
   --third-bg: #E5F9FC;
@@ -93,11 +90,8 @@ input[type=text]:focus {
 
 .App-header {
   background: var(--main-bg);
-  /* background-color: #ffffff2c; */
-  @apply w-full min-h-[8vh] text-xl flex justify-center items-center sticky top-0 z-10
+  @apply w-full min-h-[8vh] text-xl border-b border-gray-light sticky top-0 z-10 content-center
 }
-
-
 
 .project {
   background-color: #ffffffd8;
@@ -161,4 +155,14 @@ input[type=text]:focus {
 ::-webkit-scrollbar-thumb {
   background-clip: content-box;
   @apply w-[10px] bg-gray rounded-full border-2 border-solid border-transparent
+}
+
+
+/*HomePage Button*/
+.backHM {
+  @apply aspect-square absolute right-5 top-3 bg-transparent rounded-full text-dark-blue grid place-items-center hover:bg-orange hover:bg-opacity-10 hover:shadow-sm transition-all
+}
+
+.title {
+  @apply font-bold text-dark-blue select-none text-3xl text-center
 }

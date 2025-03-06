@@ -28,13 +28,16 @@ import w2 from '../../../public/work2.png';
 import w3 from '../../../public/work3.png';
 import w4 from '../../../public/work4.png';
 
+
 function PersonIntro() {
     return (
-        <div className='p-3 text-3xl text-dark-blue'>
-            <p className='font-bold'>Hello World!</p>
-            <span>This is</span>
-            <p className='font-black text-[63px]'>Nini Ku</p>
-        </div>
+        <FadeInComponent>
+            <div className='p-3 text-3xl text-dark-blue'>
+                <p className='font-bold'>Hello World!</p>
+                <span>This is</span>
+                <p className='font-black text-[63px] font-sp'>Nini Ku</p>
+            </div>
+        </FadeInComponent>
     );
 }
 
@@ -47,7 +50,7 @@ const designingSkills = [{ name: "Figma", img: figma }, { name: "UI/UX", img: ui
 
 const hobbies = [{ name: "illustration", img: illustrate }, { name: "Pets", img: pets }, { name: "Reading", img: reading }, { name: "Photography", img: photographs }];
 
-const works = [{ name: "Taipei Into Website", tag: "design | frontend | API", img: w1 }, { name: "GIS UI design", tag: "UI/UX", img: w2 }, { name: "UI/UX Redesign Project", tag: "UI/UX", img: w3 }, { name: "Feeling Interior Design", tag: "design", img: w4 }];
+const works = [{ name: "Taipei Into Website", tag: "web-design | frontend | API", img: w1 }, { name: "GIS UI design", tag: "UI/UX", img: w2 }, { name: "UI/UX Redesign Project", tag: "UI/UX", img: w3 }, { name: "Feeling Interior Design", tag: "web-design", img: w4 }];
 
 function Skills() {
     return (
@@ -73,7 +76,7 @@ function Hobbies() {
 function Works() {
     return (
         <div className='flex flex-col gap-5'>
-            {works.map((el) => <motion.div initial={{ scale: 1 }} whileHover={{ scale: 1.05 }} className='work-item' key={el.name}><Image src={el.img} width={50} height={50} alt={el.name} /><p>{el.name}</p><span className='tag'>{el.tag}</span><p className='description'>content & description ...</p></motion.div>)}
+            {works.map((el) => <motion.div initial={{ scale: 1 }} whileHover={{ scale: 1.05 }} className='work-item' key={el.name}><Image src={el.img} width={50} height={50} alt={el.name} /><p>{el.name}</p><span className='tag'>{el.tag}</span><p className='content'>content & description ...</p></motion.div>)}
         </div>
     );
 }

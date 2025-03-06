@@ -1,6 +1,7 @@
 const nextConfig = {
     output: 'export',
-    distDir: './dist',
+    // distDir: './dist',
+    basePath: "/next-react-projects",
     images: { unoptimized: true }
 };
 

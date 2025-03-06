@@ -43,7 +43,9 @@ function InputEnter({ add }) {
   return (
     <>
       <input type="text" className="add-input pl-8" placeholder="type something" onKeyDown={handleKeyDown} ref={inputRef} />
-      <button className='add-btn' onClick={handleClick}>Add</button>
+      <button className='add-btn' onClick={handleClick}>
+        <FontAwesomeIcon icon="fa-solid fa-plus" />
+      </button>
     </>
   );
 }
@@ -177,7 +179,7 @@ export default function TodoList() {
   return (
 
       <FadeInComponent>
-        <p className="description">Enter Your Todo items, then press Enter key or the Add button behind.</p>
+        <p className="description">Enter your Todo items, then press Enter key or the Add button behind.</p>
         <div className='addBlock'>
           <InputEnter add={addTodo} />
         </div>
@@ -185,7 +187,10 @@ export default function TodoList() {
         <ListContainer contents={allTodoList} del={deleteTodo} toggle={toggleComplete} edit={editTodo} setEditingId={setEditingId} isEditing={editingId} />
 
         {/* clear所有紀錄 */}
-        <button className="bg-dark-blue hover:bg-alert w-fit p-2 rounded-sm mx-auto mt-3 text-white transition-colors" onClick={() => { setAllTodoList([]); setCount(0); }}>Clear All History</button>
+      <button className="clearHistoryBtn" onClick={() => { setAllTodoList([]); setCount(0); }}>
+        <FontAwesomeIcon className="mr-2" icon="fa-solid fa-trash-can" />
+      Clear All History
+      </button>
       </FadeInComponent>
 
   );

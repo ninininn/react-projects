@@ -35,7 +35,7 @@
 }
 
 .add-btn, .edit-btn, .del-btn {
-  @apply rounded-sm bg-primary px-2 py-1 text-dark-blue hover:bg-orange transition hover:text-white
+  @apply rounded-md bg-primary px-2 py-1 text-dark-blue hover:bg-orange transition hover:text-white
 }
 
 .edit-btn,
@@ -49,4 +49,9 @@
 
 .checkbox {
   @apply appearance-none
+}
+
+
+.clearHistoryBtn{
+  @apply hover:bg-gray hover:bg-opacity-30 hover:text-gray-dark w-fit px-3 py-1 mx-auto mt-5 text-gray transition-colors rounded-md
 }
