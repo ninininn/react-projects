@@ -15,7 +15,12 @@ import { spFont } from './utils/font';
 
 const projects = ["Todolist", "Calculator", "About", "FileReader"];
 
-
+export const metadata = {
+    title: "My Portfolio",
+    icons: {
+        icon: "react-projects/me.png", // 如果需要使用 .ico 格式，也可以換成 "/favicon.ico"
+    },
+};
 export default function RootLayout({ children }) {
     const activeSegment = useSelectedLayoutSegment();
     const currentPage = activeSegment
@@ -24,13 +29,6 @@ export default function RootLayout({ children }) {
 
     return (
         <html lang="en">
-            <head>
-                <Head>
-                    <title>{currentPage}</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <link rel="icon" href="/react-projects/me.png" sizes="any" />
-                </Head>
-            </head>
             <body className={`${spFont}`}>
                 <div id="root" >
                     <div className={`App ${activeSegment || ""}`}>

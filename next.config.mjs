@@ -1,8 +1,9 @@
 const nextConfig = {
     output: 'export',
     // distDir: './dist',
-    basePath: "/next-react-projects",
-    images: { unoptimized: true }
+    basePath: "/react-projects",
+    images: { unoptimized: true },
+    assetPrefix: "/react-projects",
 };
 
 export default nextConfig;
