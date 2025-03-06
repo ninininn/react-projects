@@ -1,6 +1,7 @@
 //!RootLayout!
 'use client';
 import Link from 'next/link';
+import Head from "next/head";
 import '../styles/global.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -20,7 +21,11 @@ export default function RootLayout({ children }) {
 
     return (
         <html lang="en">
-            <link rel="icon" href="../../public/me.png" sizes="any" />
+            <Head>
+                <title>{currentPage}</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/me.png" sizes="any" />
+            </Head>
             <body className={`${spFont}`}>
                 <div id="root" >
                     <div className={`App ${activeSegment}`}>
