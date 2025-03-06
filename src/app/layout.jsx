@@ -24,11 +24,13 @@ export default function RootLayout({ children }) {
 
     return (
         <html lang="en">
-            <Head>
-                <title>{currentPage}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/me.png" sizes="any" />
-            </Head>
+            <head>
+                <Head>
+                    <title>{currentPage}</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="icon" href="/me.png" sizes="any" />
+                </Head>
+            </head>
             <body className={`${spFont}`}>
                 <div id="root" >
                     <div className={`App ${activeSegment || ""}`}>
